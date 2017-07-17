@@ -11,6 +11,14 @@ services:
     restart: always
     depends_on:
       - cache
+  ssh:
+    image: vauxoo/docker-ssh
+    volumes_from:
+      - weblate
+    links:
+      - weblate
+    depends_on:
+      - weblate
   cache:
     image: memcached:1.4
     restart: always
